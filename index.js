@@ -11,7 +11,6 @@ class MyElement extends LitElement {
   static get styles() {
     return [css`
     .mood { color: green; }
-    .hidden { color: red; }
     `];
   }
 
