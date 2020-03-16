@@ -16,8 +16,8 @@ class MyContainer extends LitElement {
 
   render() {
     return html`
-     Hello Container
-     <my-another-component></my-another-component>
+     Hello Container <br>
+     <my-another-component></my-another-component> <br>
      <my-component></my-component>`;
   }
 }
