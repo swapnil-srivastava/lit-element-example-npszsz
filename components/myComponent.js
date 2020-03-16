@@ -12,6 +12,10 @@ class MyComponent extends LitElement {
     `];
   }
 
+  constructor() {
+    super();
+  }
+
   render() {
     return html`
      Hello component`;
