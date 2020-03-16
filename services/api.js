@@ -1,5 +1,5 @@
-import {urls} from '../../config/config';
+import {urls} from '../config/config';
 
-export function getCustomerInformation(customerid, branchid) {
-  return fetch(`${urls.testUrl}`);
+export function test() {
+  return fetch(urls.testUrl);
 }

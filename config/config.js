@@ -1,5 +1,5 @@
 const baseURL = 'https://jsonplaceholder.typicode.com';
 
 export const urls = {
-    testUrl: `${testUrl}/todos/1`,
+    testUrl: `${baseURL}/todos/1`,
 };
