@@ -1,4 +1,5 @@
 import {LitElement, html, css} from 'lit-element';
+import './container/myContainer.js';
 
 class MyElement extends LitElement {
 
@@ -16,7 +17,8 @@ class MyElement extends LitElement {
 
   render() {
     return html`
-     Hello <span class="mood">${this.mood}</span>!`;
+     Hello <span class="mood">${this.mood}</span>!
+     <m>`;
   }
 }
 
