@@ -18,7 +18,7 @@ class MyElement extends LitElement {
   render() {
     return html`
      Hello <span class="mood">${this.mood}</span>!
-     <m>`;
+     <my-container></my-container>`;
   }
 }
 

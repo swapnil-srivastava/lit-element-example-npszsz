@@ -1,4 +1,6 @@
 import {LitElement, html, css} from 'lit-element';
+import '../components/myAnotherComponent.js';
+import '../components/myComponent.js';
 
 class MyContainer extends LitElement {
 
@@ -14,7 +16,9 @@ class MyContainer extends LitElement {
 
   render() {
     return html`
-     Hello Container`;
+     Hello Container
+     <my-another-component></my-another-component>
+     <my-component></my-component>`;
   }
 }
 
