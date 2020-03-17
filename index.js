@@ -1,5 +1,6 @@
 import {LitElement, html, css} from 'lit-element';
 import './container/myContainer.js';
+import './services/interceptor.js';
 
 class MyElement extends LitElement {
 
