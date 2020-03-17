@@ -35,21 +35,20 @@ class MyComponent extends LitElement {
   }
 
   handleClick(value) {
-    console.log('this', this.inputEl);
-     test(5)
+     test(+this.inputUserId)
     .then(response => response.json())
     .then(resp => this.user = resp);
   }
   
   updateChange(value) {
-    console.log('value aaa', value);
+    this.inputUserId = value.target.value;
   }
 
 
   render() {
     return html`
      Hello component <br> <br> 
-     <input  .value="${this.inputUserId}" @change="${this.updateChange}"/>  <br> 
+     <input type="text" .value="${this.inputUserId}" @change="${this.updateChange}"/>  <br> 
      <button @click="${this.handleClick}"> Change value </button> <br> <br>
      user id <span class="resp">${this.user.userId}</span> <br>
      title :  <span class="resp">${this.user.title}</span> <br>
