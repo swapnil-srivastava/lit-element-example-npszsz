@@ -37,9 +37,17 @@ class MyComponent extends LitElement {
   }
 
   handleClick(value) {
+     this.loading = true;
      test(+this.inputUserId)
     .then(response => response.json())
-    .then(resp => this.user = resp);
+    .then(resp => {
+      this.loading = false;
+      this.user = resp
+      })
+    .catch(err => {
+      this.loading = true
+      console.log('error block', err);  
+    })
   }
   
   render() {
