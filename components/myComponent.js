@@ -1,5 +1,5 @@
 import {LitElement, html, css} from 'lit-element';
-import {test} from '../services/api.js';
+import {test, cancelRequest} from '../services/api.js';
 
 class MyComponent extends LitElement {
 
@@ -39,8 +39,14 @@ class MyComponent extends LitElement {
       return response.data;
       // return response.json();
     })
-    .then(resp => this.user = resp);
-    console.log('connected callback')
+    .then(resp => this.user = resp)
+    .catch(thrown => {
+      if (axios.isCancel(thrown)) {
+        console.log(thrown.message);
+      } else {
+        // handle error
+      }
+    });
   }
 
   disconnectedCallback() {
@@ -72,12 +78,18 @@ class MyComponent extends LitElement {
       return index !== indexClicked;
     })
   }
+
+  handleCancel() {
+    cancelRequest();
+  }
   
   render() {
     return html`
      <br>
      <input type="text" .value="${this.inputUserId}" @change="${event => this.inputUserId = event.target.value}"/>  <br> 
-     <button @click="${this.handleApiClick}"> Change value </button> <br> <br>
+     <button @click="${this.handleApiClick}"> Change value </button> <br>
+
+     <button @click="${this.handleApiClick}"> Cancel Request </button> <br> <br>
 
       ${this.loading ?
       html`<p>Loading</p>`:
