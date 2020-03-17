@@ -22,6 +22,7 @@ class MyComponent extends LitElement {
   constructor() {
     super();
     this.inputUserId = '';
+    this.inputList = '';
     this.loading = false;
     this.testingArr = [
       { name : 'Swapnil'},
@@ -53,13 +54,20 @@ class MyComponent extends LitElement {
       this.user = resp
       })
     .catch(err => {
-      this.loading = false
+      this.loading = false;
       console.log('error block ===>', err);  
     })
   }
 
-  handleClick(value) {
-    console.log(value);
+  handleAdd() {
+    if (!this.inputList) return; 
+    this.testingArr = [...this.testingArr, { name: this.inputList}];
+  }
+
+  handleRemove(indexClicked) {
+    this.testingArr = this.testingArr.filter((item, index) => {
+      return index !== indexClicked;
+    })
   }
   
   render() {
@@ -75,9 +83,15 @@ class MyComponent extends LitElement {
                 completed :  <span class="resp">${this.user.completed}</span> <br>
                 id :  <span class="resp">${this.user.id}</span> <br></p>`}
                 
-
-     <button @click="${this.handleClick}"> Insert value </button> <br> 
-       ${this.testingArr.map(i => html`<li>${i.name}</li>`)}
+     <input type="text" .value="${this.inputList}" 
+     @change="${event => this.inputList = event.target.value}"/>  <br> 
+     <button @click="${this.handleAdd}"> Insert value </button> <br> <br>
+      
+      Click on the list item to remove
+      ${this.testingArr.map((item, index) => {
+        return html`<li @click="${event => this.handleRemove(index)}">${item.name}</li>`
+       })
+     }
      `;
   }
 }
