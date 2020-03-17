@@ -6,7 +6,8 @@ class MyComponent extends LitElement {
   static get properties() {
     return { 
       user : { type: Object },
-      inputUserId : { type : Number }
+      inputUserId : { type : Number },
+      loading: { type : Boolean}
     }
   }
 
@@ -27,6 +28,7 @@ class MyComponent extends LitElement {
     .then(response => response.json())
     .then(resp => this.user = resp);
     console.log('connected callback')
+
   }
 
   disconnectedCallback() {
