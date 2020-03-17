@@ -34,7 +34,7 @@ class MyComponent extends LitElement {
 
   connectedCallback() {
     super.connectedCallback()
-    test()
+    test(4)
     .then(response => {
       return response.data;
       // return response.json();
@@ -51,7 +51,7 @@ class MyComponent extends LitElement {
   handleApiClick(value) {
      this.loading = true;
      test(+this.inputUserId)
-    .then(response => response.json())
+    .then(response => response.data)
     .then(resp => {
       this.loading = false;
       this.user = resp

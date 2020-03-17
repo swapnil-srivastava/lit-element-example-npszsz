@@ -1,6 +1,9 @@
 import {LitElement, html, css} from 'lit-element';
 import './container/myContainer.js';
 import './services/interceptor.js';
+import LogRocket from 'logrocket';
+
+LogRocket.init('f5gsam/test');
 
 class MyElement extends LitElement {
 

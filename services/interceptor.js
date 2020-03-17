@@ -19,6 +19,7 @@ axios.interceptors.request.use(config => {
 axios.interceptors.response.use((response) => {
   // do something with the response data
   console.log('Response was received', response);
+  
 
   return response;
 }, error => {
