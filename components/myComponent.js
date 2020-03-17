@@ -35,7 +35,10 @@ class MyComponent extends LitElement {
   connectedCallback() {
     super.connectedCallback()
     test()
-    .then(response => response.json())
+    .then(response => {
+      return response.data;
+      // return response.json();
+    })
     .then(resp => this.user = resp);
     console.log('connected callback')
   }
