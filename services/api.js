@@ -11,5 +11,5 @@ export function test(id = 2) {
 }
 
 export function cancelRequest() {
-  source.cancel('Request canceled.');
+  source.cancel();
 }
