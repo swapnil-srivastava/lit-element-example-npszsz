@@ -7,7 +7,8 @@ class MyComponent extends LitElement {
     return { 
       user : { type: Object },
       inputUserId : { type : Number },
-      loading: { type: Boolean}
+      loading: { type: Boolean}, 
+      testingArr: { type : Array}
     }
   }
 
@@ -21,6 +22,12 @@ class MyComponent extends LitElement {
     super();
     this.inputUserId = '';
     this.loading = false;
+    this.testingArr = [
+      { name : 'Swapnil'},
+      { name : 'Suhani'},
+      { name : 'Mudrika'},
+      { name : 'Avni'},
+    ]
   }
 
   connectedCallback() {
@@ -36,7 +43,7 @@ class MyComponent extends LitElement {
     console.log('disconnected callback');
   }
 
-  handleClick(value) {
+  handleApiClick(value) {
      this.loading = true;
      test(+this.inputUserId)
     .then(response => response.json())
@@ -46,21 +53,30 @@ class MyComponent extends LitElement {
       })
     .catch(err => {
       this.loading = false
-      console.log('error block', err);  
+      console.log('error block ===>', err);  
     })
+  }
+
+  handleClick(value) {
+    console.log(value);
   }
   
   render() {
     return html`
      Hello component <br> <br> 
      <input type="text" .value="${this.inputUserId}" @change="${event => this.inputUserId = event.target.value}"/>  <br> 
-     <button @click="${this.handleClick}"> Change value </button> <br> <br>
+     <button @click="${this.handleApiClick}"> Change value </button> <br> <br>
+
       ${this.loading ?
       html`<p>Loading</p>`:
       html`<p> user id <span class="resp">${this.user.userId}</span> <br>
                 title :  <span class="resp">${this.user.title}</span> <br>
                 completed :  <span class="resp">${this.user.completed}</span> <br>
                 id :  <span class="resp">${this.user.id}</span> <br></p>`}
+                
+      <input type="text" .value="${this.inputUserId}" @change="${event => this.inputUserId = event.target.value}" @change="${this.handleClick}"/>  <br> 
+      <button @click="${this.handleClick}"> Change value </button> <br> <br>
+       ${this.testingArr.map(i => html`<li>${i.name}</li>`)}
      `;
   }
 }
