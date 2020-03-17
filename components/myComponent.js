@@ -45,7 +45,7 @@ class MyComponent extends LitElement {
       this.user = resp
       })
     .catch(err => {
-      this.loading = true
+      this.loading = false
       console.log('error block', err);  
     })
   }
