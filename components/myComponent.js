@@ -8,7 +8,8 @@ class MyComponent extends LitElement {
       user : { type: Object },
       inputUserId : { type : Number },
       loading: { type: Boolean}, 
-      testingArr: { type : Array}
+      testingArr: { type : Array},
+      inputList: {value: String}
     }
   }
 
@@ -63,7 +64,7 @@ class MyComponent extends LitElement {
   
   render() {
     return html`
-     Hello component <br> <br> 
+     <br>
      <input type="text" .value="${this.inputUserId}" @change="${event => this.inputUserId = event.target.value}"/>  <br> 
      <button @click="${this.handleApiClick}"> Change value </button> <br> <br>
 
@@ -74,8 +75,8 @@ class MyComponent extends LitElement {
                 completed :  <span class="resp">${this.user.completed}</span> <br>
                 id :  <span class="resp">${this.user.id}</span> <br></p>`}
                 
-      <input type="text" .value="${this.inputUserId}" @change="${event => this.inputUserId = event.target.value}" @change="${this.handleClick}"/>  <br> 
-      <button @click="${this.handleClick}"> Change value </button> <br> <br>
+
+     <button @click="${this.handleClick}"> Insert value </button> <br> 
        ${this.testingArr.map(i => html`<li>${i.name}</li>`)}
      `;
   }
